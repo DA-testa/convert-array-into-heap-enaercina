@@ -20,13 +20,13 @@ def heapify(a):
     num_swaps = len(swaps)
     return num_swaps, swaps
 def main():
-    inp = input()
-    if "I" in inp:
+    iev = input()
+    if "I" in iev:
         n = int(input())
         a = list(map(int, input().split()))
         assert len(a) == n
         num_swaps, swaps = heapify(a)
-    elif "F" in ievade:
+    elif "F" in iev:
         fails = "./tests/" + input()
         if "a" in fails:
             print("wrong file name")
