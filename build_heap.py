@@ -20,8 +20,8 @@ def heapify(a):
     num_swaps = len(swaps)
     return num_swaps, swaps
 def main():
-    ievade = input()
-    if "I" in ievade:
+    inp = input()
+    if "I" in inp:
         n = int(input())
         a = list(map(int, input().split()))
         assert len(a) == n
