@@ -19,7 +19,7 @@ def heapify(a):
 
     num_swaps = len(swaps)
     return num_swaps, swaps
-if __name__ == "__main__":
+def main():
     n = int(input())
     a = list(map(int, input().split()))
 
@@ -33,3 +33,6 @@ if __name__ == "__main__":
         for element in sublist:
             result = result + str(element) + " "
     print(result)
+
+if __name__ == "__main__":
+    main()
