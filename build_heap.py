@@ -1,68 +1,35 @@
-def heapify(arr, N, i):
-    largest = i  # Initialize largest as root
-    l = 2 * i + 1  # left = 2*i + 1
-    r = 2 * i + 2  # right = 2*i + 2
+def heapify(a):
+    n = len(a)
     swaps = []
 
-    # See if left child of root exists and is
-    # greater than root
-    if l < N and arr[largest] < arr[l]:
-        largest = l
+    for i in range(n // 2, -1, -1):
+        j = i
+        while j < n:
+            min_idx = j
+            if 2*j+1 < n and a[2*j+1] < a[min_idx]:
+                min_idx = 2*j+1
+            if 2*j+2 < n and a[2*j+2] < a[min_idx]:
+                min_idx = 2*j+2
+            if j != min_idx:
+                swaps.append((j, min_idx))
+                a[j], a[min_idx] = a[min_idx], a[j]
+                j = min_idx
+            else:
+                break
 
-    # See if right child of root exists and is
-    # greater than root
-    if r < N and arr[largest] < arr[r]:
-        largest = r
-
-    # Change root, if needed
-    if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]  # swap
-        swaps.append((i, largest))
-        total_swaps = 1
-
-        # Heapify the root.
-        sub_swaps, sub_total_swaps = heapify(arr, N, largest)
-        swaps.extend(sub_swaps)
-        total_swaps += sub_total_swaps
-
-    return swaps, total_swaps
-
-def build_heap(data):
-    swaps = []
-    total_swaps = 0
-
-    # Build a maxheap.
-    for i in range(len(data) // 2 - 1, -1, -1):
-        sub_swaps, sub_total_swaps = heapify(data, len(data), i)
-        swaps.extend(sub_swaps)
-        total_swaps += sub_total_swaps
-
-    # One by one extract elements
-    for i in range(len(data) - 1, 0, -1):
-        data[i], data[0] = data[0], data[i]  # swap
-        swaps.append((0, i))
-        sub_swaps, sub_total_swaps = heapify(data, i, 0)
-        swaps.extend(sub_swaps)
-        total_swaps += sub_total_swaps
-
-    return data, swaps, total_swaps
-
-
-def main():
-    # input from keyboard
+    num_swaps = len(swaps)
+    return num_swaps, swaps
+if __name__ == "__main__":
     n = int(input())
-    data = list(map(int, input().split()))
+    a = list(map(int, input().split()))
 
-    # checks if length of data is the same as the said length
-    assert len(data) == n
+    num_swaps, swaps = heapify(a)
 
-    # calls function to assess the data
-    # and give back all swaps
-    data, swaps, total_swaps = build_heap(data)
-
-    # output how many swaps were made
-    print("Number of swaps made: ", total_swaps)
-
-    # output all swaps
-    for i, j in swaps:
-        print(i, j)
+    #print(num_swaps)
+    #for i, j in swaps:
+       # print(i, j)
+    result = str(num_swaps)+" "
+    for sublist in swaps:
+        for element in sublist:
+            result = result + str(element) + " "
+    print(result)
