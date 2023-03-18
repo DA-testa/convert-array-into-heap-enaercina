@@ -22,16 +22,16 @@ def heapify(a):
 def main():
     n = int(input())
     a = list(map(int, input().split()))
-
+    assert len(a) == n
     num_swaps, swaps = heapify(a)
 
 #    print(num_swaps)
 #    for i, j in swaps:
 #        print(i, j)
-    result = str(num_swaps)+" "
+    result = str(num_swaps)
     for sublist in swaps:
         for element in sublist:
-            result = result + str(element) + " "
+            result = result + str(element)
     print(result)
 
 if __name__ == "__main__":
