@@ -25,11 +25,11 @@ if __name__ == "__main__":
 
     num_swaps, swaps = heapify(a)
 
-    #print(num_swaps)
-    #for i, j in swaps:
-       # print(i, j)
-    result = str(num_swaps)+" "
-    for sublist in swaps:
-        for element in sublist:
-            result = result + str(element) + " "
-    print(result)
+    print(num_swaps)
+    for i, j in swaps:
+        print(i, j)
+#    result = str(num_swaps)+" "
+#    for sublist in swaps:
+#        for element in sublist:
+#            result = result + str(element) + " "
+#    print(result)
