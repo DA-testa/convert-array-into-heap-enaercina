@@ -27,7 +27,11 @@ def shift_down(i, data, swaps):
 
 def main():
     # input from keyboard
-    n = int(input())
+    try:
+        n = int(input())
+    except ValueError:
+        print("Invalid input: please enter a valid integer.")
+        return
     data = list(map(int, input().split()))
 
     # checks if length of data is the same as the said length
