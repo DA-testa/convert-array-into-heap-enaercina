@@ -20,7 +20,8 @@ def heapify(a):
     num_swaps = len(swaps)
     return num_swaps, swaps
 def main():
-    n = int(float(input()))
+    I = input()
+    n = int(input())
     a = list(map(int, input().split()))
     assert len(a) == n
     num_swaps, swaps = heapify(a)
